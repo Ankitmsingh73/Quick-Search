@@ -1,0 +1,24 @@
+.navbar {
+    width: 100%;
+    background-color: #555;
+   overflow: auto;
+   float: left;
+  }
+  .navbar a {
+    float: left;
+    text-align: center;
+    padding: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .navbar a:hover {
+    background-color: rgb(24, 94, 48);
+    padding: 7px;
+  }
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }
