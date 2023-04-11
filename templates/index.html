@@ -5,8 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quick Search</title>
-
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <style>
  
 
@@ -140,18 +139,15 @@ body{
     }
    }
    
-    }
-   }
+   
    
    
 </style>  
-
 </head>
 
 <body>
- 
+  {% include "nav.html" %}
 
- {% include "nav.html" %}
 
   <div class="container mt-4 ">
     <div class="row">
@@ -169,19 +165,33 @@ body{
       <!-- ----------------------login form--------------------      -->
       <div class="align-middle col-lg-5 col-md-10 col-sm-12 ">
         <div class="form-box px-5 py-5 mt-4 ">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'error' %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ message }}!</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% else %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ message }}!</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+          {% include "login.html" %}
+          <a class="mb-4 text-white nav-link active fs-5" aria-current="page" href="/forget"><span
+            style="color:orange">Forgot Password ?</span></a>
+          
+          <p class="mt-4 text-center text-light">don't have an account ? <a
+            class="text-white nav-link active fw-bold fs-5" aria-current="page" href="/signup"><span
+              style="color:orange" >Sign up</span></a></p>
 
-      
-             <h2 class="text-center mb-4"><span style="color:orange"> Login Here</span></h2>
-            <br>
-            {% include "loginn.html" %}
-            <p class="mt-4 text-center text-light">don't have an account ? <a
-                class="text-white nav-link active fw-bold fs-5" aria-current="page" href="#"><span
-                  style="color:orange">Sign up</span></a></p>
 
-               
-            </br>
-
-        
+        </br>
         </div>
 
 
@@ -192,9 +202,9 @@ body{
   </div>
   
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> 
 </body>
 
 </html>
